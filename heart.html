@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>colorful Heart Mousemove</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+			box-sizing:border-box;
+		}
+		body{
+			overflow:hidden;
+			height:100vh;
+			background:rgb(0, 35, 47);
+		}
+		span{
+			position:absolute;
+			background-image:url(heart.png);
+			pointer-events:none;
+			transform:translate(-50%,-50%);
+			width:100px;
+			height:100px;
+			background-size:cover;
+			animation:animate 2s linear infinite;
+		}
+		@keyframes animate {
+			0%{
+				transform:translate(-50%,-50%);
+				opacity:1;
+				filter: hue-rotate(0deg);
+			}
+			100%{
+				transform:translate(-50%,-1000%);
+				opacity:0;
+				filter: hue-rotate(2000deg);
+			}
+		}
+		
+		
+		
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		document.addEventListener("mousemove", function(e){
+			var body = document.querySelector('body');
+			var heart = document.createElement("span");
+			var x = e.offsetX;
+			var y = e.offsetY;
+			
+			heart.style.left = x+'px';
+			heart.style.top = y+'px';
+			var size = Math.random() * 100;
+			heart.style.width = 10+size+'px';
+			heart.style.height = 10+size+'px';
+			body.appendChild(heart);
+			
+			setTimeout(function(){
+				heart.remove();
+			},2000);
+		});
+	</script>
+</body>
+</html>
